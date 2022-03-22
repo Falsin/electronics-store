@@ -1,0 +1,13 @@
+extends layout
+
+block content 
+  #mainContent.category 
+    h2 Categories
+    .list
+      each val in categories 
+        div 
+          h3 
+            a(href=`${val.url}`) #{val.title}
+      div 
+        h3
+          a(href='/home/categories/create/') Add Category

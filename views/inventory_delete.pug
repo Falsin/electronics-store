@@ -1,0 +1,11 @@
+extends layout 
+
+block content
+  h1= title
+  p Do you really want to delete this inventory?
+
+  form(action="", method="post")
+    .form-group 
+      input#inventoryId(type='hidden', name='inventoryId', required='true', value=document._id)
+    
+    button(type="submit") Delete 

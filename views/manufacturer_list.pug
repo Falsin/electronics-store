@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  #mainContent.manufacturer 
+    h2 Manufacturers 
+    .list 
+      each val in manufacturers
+        div
+          h3 
+            a(href=`${val.url}`) #{val.brand_name}
+      div 
+        h3 
+          a(href='create/') Add Manufacturer

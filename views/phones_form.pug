@@ -1,0 +1,40 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(action="", method="post")
+    .form-group 
+      label(for="title") Title: 
+      input#title(type="text", placeholder="Title of phone" name="title", required="true" value=(undefined===phone ? '' : phone.title))
+    .form-group 
+      label(for="description") Description: 
+      input#description(type="text", placeholder="Description of phone" name="description", required="true" value=(undefined===phone ? '' : phone.description)) 
+    .form-group 
+      label(for="category") Category: 
+      select#category(type="select" placeholder="Select category" name="category" required="true")
+        for category in categories
+          if phone 
+            option(
+              value=phone._id
+              selected=(phone.category._id === categories._id ? "selected" : false) 
+            ) #{category.title}
+          else 
+            option(value=category._id) #{category.title} 
+    .form-group 
+      label(for="price") Price: 
+      input#price(type="number", placeholder="Price of phone" name="price", required="true" value=(undefined===phone ? '' : phone.price))
+    .form-group 
+      label(for="number_in_stock") Number in the stock: 
+      input#number_in_stock(type="number", placeholder="Number in the stock" name="number_in_stock", required="true" value=(undefined===phone ? '' : phone.number_in_stock))
+    .form-group 
+      label(for="manufacturer") Manufacturer: 
+      select#manufacturer(type="select" placeholder="Select manufacturer" name="manufacturer" required="true")
+        for manufacturer in manufacturers
+          if phone 
+            option(
+              value=phone._id
+              selected=(phone.manufacturer._id === manufacturer._id ? "selected" : false) 
+            ) #{manufacturer.brand_name}
+          else 
+            option(value=manufacturer._id) #{manufacturer.brand_name} 

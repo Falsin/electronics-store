@@ -1,0 +1,21 @@
+extends layout 
+
+block content 
+  h1= title
+
+  if documentCollection.length
+    p #[strong Delete the following inventories before attempting to delete this manufacturer.]
+    ul
+      each object in documentCollection
+        ul
+          each val, key in object
+            li #{key}: #{(typeof val === 'object') ? (val.title || val.brand_name) : val}
+  else 
+    p Do you really want to delete this manufacturer?
+    form(action="", method="post") 
+      .form-group 
+        input(type='hidden', name='manufacturerId', required='true', value=manufacturer._id)
+
+      button(type="submit") Delete
+  
+      

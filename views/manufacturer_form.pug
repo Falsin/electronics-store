@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(action="", method="post")
+    .form-group 
+      label(for="brand_name") Brand name: 
+      input#brand_name(type="text", placeholder="Brand name", name="brand_name", required="true", value=(undefined===manufacturer ? '' : manufacturer.brand_name))
+    .form-group 
+      label(for="description") Description: 
+      input#description(type="text", placeholder="Description", name="description", required="true", value=(undefined===manufacturer ? '' : manufacturer.description))
+
+    input(type="hidden" name='id' value=manufacturer._id)
+    button(type="submit") Submit

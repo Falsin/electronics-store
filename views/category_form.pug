@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(action="", method="post")
+    .form-group 
+      label(for="title") Title: 
+      input#title(type="text", placeholder="Title of category" name="title", required="true" value=(undefined===category ? '' : category.title))
+    .form-group 
+      label(for="description") Description: 
+      input#description(type="text", placeholder="Description of category" name="description", required="true" value=(undefined===category ? '' : category.description))
+
+    input#categoryId(type="hidden", name='categoryId', required='true', value=(undefined===category ? '' : category._id) readonly)
+    button(type="submit") Submit

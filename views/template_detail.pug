@@ -1,0 +1,21 @@
+extends layout 
+
+block content 
+  h1= title
+
+  ul 
+    each val, key in document 
+      if typeof val === 'object'
+        if key === 'image'
+          li #{key}:
+          img(src=`data:image/${val.contentType};base64,${val.data.toString('base64')}`)
+        else
+          li #{key}: 
+            a(href=urlObject[key]) #{val.title || val.brand_name}
+      else 
+        li #{key}: #{val}
+
+
+  .buttons
+    a(href=title + '/update') Update inventory
+    a(href=title + '/delete') Delete inventory

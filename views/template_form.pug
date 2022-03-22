@@ -1,0 +1,39 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(action="", method="post", enctype="multipart/form-data")
+    .form-group 
+      label(for="title") Title: 
+      input#title(type="text", placeholder="Title of inventory" name="title", required="true" value=undefined===inventory ? '' : inventory.title)
+    .form-group 
+      label(for="description") Description: 
+      input#description(type="text", placeholder="Description of inventory" name="description", required="true" value=undefined===inventory ? '' : inventory.description) 
+    .form-group
+      label(for="category") Category:
+      input#category(type="text", name="category", required="true" value=category._id style={display: 'none'}) 
+      | #{category.title}
+    .form-group 
+      label(for="price") Price: 
+      input#price(type="number", placeholder="Price of inventories" name="price", required="true" value=undefined===inventory ? '' : inventory.price)
+    .form-group 
+      label(for="number_in_stock") Number in the stock: 
+      input#number_in_stock(type="number", placeholder="Number in the stock" name="number_in_stock", required="true" value=undefined===inventory ? '' : inventory.number_in_stock)
+    .form-group 
+      label(for="manufacturer") Manufacturer: 
+      select#manufacturer(type="select" placeholder="Select manufacturer" name="manufacturer" required="true")
+        for manufacturer in manufacturers
+          if inventory
+            option(
+                value=manufacturer._id,
+                selected=(manufacturer._id.equals(inventory.manufacturer._id.toString()) ? 'selected' : false) 
+              ) #{manufacturer.brand_name}
+          else 
+            option(value=manufacturer._id) #{manufacturer.brand_name}
+
+    .form-group 
+      label(for="image") Image: 
+      input(type="file" name="image" accept="image/*")
+    input(type='hidden' name='id' value=undefined===inventory ? '' : inventory._id)  
+    button(type="submit") Submit

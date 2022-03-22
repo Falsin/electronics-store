@@ -1,0 +1,27 @@
+extends layout
+
+block content 
+  h1 Manufacturer: #{manufacturer.brand_name}
+
+  .description 
+    h2 Description 
+    p #{manufacturer.description}
+
+  h2 Inventory list 
+
+  if documentCollection
+    ul 
+      each val in documentCollection
+        ul(style={position: 'relative'})
+          a(href=val.url, style={display: 'block', width: '100%', height: '100%', position: 'absolute'})
+          li Title: #{val.title}
+          li Description: #{val.description}
+          li Category:  #{val.category.title}
+          li Price:  #{val.price}
+          li Number in stock: #{val.number_in_stock}
+  else 
+    p This manufacturer has no inventorymanufacturer_delete_get
+
+  .buttons
+    a(href=`/home/manufacturers/${manufacturer.brand_name}/update`) Update manufacturer 
+    a(href=`/home/manufacturers/${manufacturer.brand_name}/delete`) Delete manufacturer 

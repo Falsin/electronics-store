@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+header {
+  padding: 3vmin;
+  background: #282c33;
+  color: white;
+  text-align: center;
+}
+#mainContent.homePage div {
+  display: flex;
+}
+#mainContent.homePage div div {
+  background: red;
+  margin: 2vmin;
+}
+#mainContent.homePage div div a {
+  padding: 2vmin;
+  color: white;
+  display: block;
+  height: 100%;
+}
+#mainContent.category div {
+  display: flex;
+}
+#mainContent.category div div {
+  background: red;
+  margin: 2vmin;
+}
+#mainContent.category div div a {
+  padding: 2vmin;
+  color: white;
+  display: block;
+  height: 100%;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+a {
+  color: #00B7FF;
+}
